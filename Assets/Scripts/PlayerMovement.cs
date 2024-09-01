@@ -10,11 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private Rigidbody2D playerRb;
     private Animator playerAnim;
-    
+    public static bool mouseController;
 
     // Start is called before the first frame update
     void Start()
     {
+        mouseController = true;
         playerRb = GetComponent<Rigidbody2D>(); 
         playerAnim = GetComponent<Animator>();
     }
@@ -22,26 +23,45 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //direction.x = Input.GetAxis("Horizontal");
-        //direction.y = Input.GetAxis("Vertical");
-        //Move by Mouse
-        if(Input.GetMouseButtonDown(0))
-        {
-            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            movement = (direction - playerRb.position).normalized;
-            isMoving = true;
-        }
 
+        //Move by Mouse
+        if(mouseController)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                movement = (direction - playerRb.position).normalized;
+                isMoving = true;
+            }
+            playerAnim.SetBool("IsMoving", isMoving);
+            playerAnim.SetFloat("Horizontal", movement.x);
+            playerAnim.SetFloat("Vertical", movement.y);
+        }
+        else
+        {
+            movement.x = Input.GetAxis("Horizontal");
+            movement.y = Input.GetAxis("Vertical");
+            playerAnim.SetBool("IsMoving", movement.sqrMagnitude > 0.1 ? true : false);
+            playerAnim.SetFloat("Horizontal", movement.magnitude >0.1f ? movement.x : playerAnim.GetFloat("Horizontal"));
+            playerAnim.SetFloat("Vertical", movement.magnitude >0.1f ? movement.y : playerAnim.GetFloat(("Vertical")));
+        }
     }
     private void FixedUpdate()
     {
-        if(isMoving)
+        if(mouseController)
+        {
+            if (isMoving)
+            {
+                playerRb.MovePosition(playerRb.position + movement * speed * Time.fixedDeltaTime);
+            }
+            if (Vector2.Distance(direction, playerRb.position) <= 0.1f)
+            {
+                isMoving = false;
+            }
+        }else
         {
             playerRb.MovePosition(playerRb.position + movement * speed * Time.fixedDeltaTime);
         }
-        if(Vector2.Distance(direction, playerRb.position)  <=0.1f)
-        {
-            isMoving = false;
-        }
+        
     }
 }
