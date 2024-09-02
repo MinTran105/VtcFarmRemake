@@ -3614,7 +3614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recyclableScrollRect: {fileID: 428366090}
   dataLenght: 10
-  hidePos: {x: 1000, y: 1000, z: 0}
+  hidePos: {x: 1000, y: 1500, z: 0}
   showPos: {x: 1000, y: 550, z: 0}
 --- !u!1 &1116806472
 GameObject:
@@ -4066,8 +4066,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 676178174}
   - {fileID: 428366088}
+  - {fileID: 676178174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
