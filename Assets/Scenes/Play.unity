@@ -696,6 +696,8 @@ MonoBehaviour:
   tb_ground: {fileID: 11400000, guid: f5b841eff935ea54382e8ef0b7c061ff, type: 2}
   tb_grass: {fileID: 11400000, guid: dba5b22f8e1b9dd4d9615a1cd8c5c88c, type: 2}
   tb_farm: {fileID: 11400000, guid: 7aed14d8fcb49e843973a68cb9199e27, type: 2}
+  farmSprite: {fileID: 1123428685, guid: 7fcdaaff054dd6c41b8e4014f8fc57a4, type: 3}
+  inventory: {fileID: 1058611934}
 --- !u!1 &470241219
 GameObject:
   m_ObjectHideFlags: 0

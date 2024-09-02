@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "473265841077",
+    "firebase_url": "https://vtcfarmremake-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "vtcfarmremake",
+    "storage_bucket": "vtcfarmremake.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473265841077:android:df4ce69a93990775b8affc",
+        "android_client_info": {
+          "package_name": "com.mint.VTCFarm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACymYuA9erYtFYvPyFFKex6-vnYX-WQlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
