@@ -32,6 +32,14 @@ public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
     {
         this.items = list;
     }
+
+    public void UpdateItem(string name,string des, Sprite sprite)
+    {
+        ItemsInformations item =  new ItemsInformations(name,des,sprite);
+        this.items.Add(item);
+        recyclableScrollRect.ReloadData();
+        Debug.Log("Nhat Thanh Cong");
+    }
     private void Start()
     {
         List<ItemsInformations> list = new List<ItemsInformations>();

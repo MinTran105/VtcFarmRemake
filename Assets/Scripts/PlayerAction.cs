@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerAction : MonoBehaviour
 {
+    [Header("Tilemap and TileBase")]
     public Tilemap tm_ground;
     public Tilemap tm_grass;
     public Tilemap tm_farm;
@@ -12,6 +13,9 @@ public class PlayerAction : MonoBehaviour
     public TileBase tb_ground;
     public TileBase tb_grass;
     public TileBase tb_farm;
+    [Header("Inventory")]
+    public Sprite farmSprite;
+    public ItemBagRSVR inventory;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,8 @@ public class PlayerAction : MonoBehaviour
             {
                 tm_farm.SetTile(TransformPosInt(), null);
                 tm_grass.SetTile(TransformPosInt(), tb_grass);
-                Debug.Log("Thu Hoach");
+                inventory.UpdateItem("Wheat", "Can Make Something", farmSprite);
+                
             }
         }
     }
