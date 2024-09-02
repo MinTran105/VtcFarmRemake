@@ -3614,7 +3614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recyclableScrollRect: {fileID: 428366090}
   dataLenght: 10
-  inventoryGobj: {fileID: 0}
+  hidePos: {x: 1000, y: 1000, z: 0}
+  showPos: {x: 1000, y: 550, z: 0}
 --- !u!1 &1116806472
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PolyAndCode.UI;
+using Unity.VisualScripting;
 
 public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
 {
     [SerializeField] RecyclableScrollRect recyclableScrollRect;
     [SerializeField] int dataLenght;
-    [SerializeField] GameObject inventoryGobj;
-
+    [SerializeField] private Vector3 hidePos;
+    [SerializeField] private Vector3 showPos;
+    private bool isShow = false;
     private List<ItemsInformations> items = new List<ItemsInformations>();
 
     private void Awake()
@@ -43,5 +45,23 @@ public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
         Debug.Log(list.ToString());
         GetListItem(list);
         recyclableScrollRect.ReloadData();
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            isShow = !isShow;
+        }
+        ShowController();
+    }
+    private void ShowController()
+    {
+        if(!isShow)
+        {
+            recyclableScrollRect.transform.position = hidePos;
+        }else
+        {
+            recyclableScrollRect.transform.position = showPos;
+        }
     }
 }
