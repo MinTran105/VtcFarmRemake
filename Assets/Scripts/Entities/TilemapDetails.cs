@@ -1,8 +1,9 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum State { Grass, Ground, Farm }
-public class TilemapDetails : MonoBehaviour
+public class TilemapDetails
 {
 
     public int x { get; set; }
@@ -16,5 +17,9 @@ public class TilemapDetails : MonoBehaviour
         this.x = x;
         this.y = y;
         this.state = state;
+    }
+    public override string ToString()
+    {
+        return JsonConvert.SerializeObject(this);
     }
 }

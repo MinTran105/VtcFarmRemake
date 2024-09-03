@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerAction : MonoBehaviour
 {
+    private MapManager mapManager;
     [Header("Tilemap and TileBase")]
     public Tilemap tm_ground;
     public Tilemap tm_grass;
@@ -19,7 +20,7 @@ public class PlayerAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
     }
 
     // Update is called once per frame
@@ -32,8 +33,10 @@ public class PlayerAction : MonoBehaviour
             if(currentTbGround != null && currentTbGrass == tb_grass)
             {
                 tm_grass.SetTile(TransformPosInt(), null);
+                mapManager.SaveTilemapChange(TransformPosInt(), State.Ground);
             }
-            Debug.Log("Dao"); 
+            Debug.Log("Dao");
+            
         }
         if(Input.GetKeyDown(KeyCode.X))
         {
@@ -45,6 +48,7 @@ public class PlayerAction : MonoBehaviour
             {
                 tm_farm.SetTile(TransformPosInt(),tb_farm);
                 Debug.Log("Trong");
+                mapManager.SaveTilemapChange(TransformPosInt(),State.Farm);
             }
         }
         if(Input.GetKey(KeyCode.C))
@@ -55,7 +59,7 @@ public class PlayerAction : MonoBehaviour
                 tm_farm.SetTile(TransformPosInt(), null);
                 tm_grass.SetTile(TransformPosInt(), tb_grass);
                 inventory.UpdateItem("Wheat", "Can Make Something", farmSprite);
-                
+                mapManager.SaveTilemapChange(TransformPosInt(), State.Grass);
             }
         }
     }

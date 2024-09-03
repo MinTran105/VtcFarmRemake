@@ -50,7 +50,6 @@ public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
             item.description = "Des: " + i;
             list.Add(item);
         }
-        Debug.Log(list.ToString());
         GetListItem(list);
         recyclableScrollRect.ReloadData();
     }

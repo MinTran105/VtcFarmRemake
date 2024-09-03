@@ -14,8 +14,6 @@ public class FirebaseDatabaseManager : MonoBehaviour
     {
         FirebaseApp app = FirebaseApp.DefaultInstance;
         dataReference = FirebaseDatabase.DefaultInstance.RootReference;
-        WriteData("mint", "Hello World");
-        ReadData("mint");
     }
 
     // Update is called once per frame

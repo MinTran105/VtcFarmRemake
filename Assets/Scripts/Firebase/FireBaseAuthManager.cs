@@ -10,8 +10,9 @@ using UnityEngine.UI;
 
 public class FireBaseAuthManager : MonoBehaviour
 {
+    public FirebaseDatabaseManager databaseManager;
     private FirebaseAuth firebaseAuth;
-
+    private GameManager gameManager;
     [Header("SwitchForm")]
     public GameObject loginForm;
     public GameObject registerForm;
@@ -32,10 +33,17 @@ public class FireBaseAuthManager : MonoBehaviour
     void Start()
     {
         firebaseAuth = FirebaseAuth.DefaultInstance;
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         registerBtn.onClick.AddListener(CreateAccountWithEmailAndPassword);
+
         loginBtn.onClick.AddListener(LoginAccountWithEmailAndPassWord);
+
         swtLoginForm.onClick.AddListener(SwitchForm);
+
         swtRegisterForm.onClick.AddListener(SwitchForm);
+
     }
 
    
@@ -54,7 +62,7 @@ public class FireBaseAuthManager : MonoBehaviour
             {
                 if(task.IsFaulted)
                 {
-                    Debug.Log("Dang Ky that bai");
+                    Debug.Log("Dang Ky that bai" + task.Exception);
                     return;
                 }else
                 if (task.IsCanceled)
@@ -64,7 +72,18 @@ public class FireBaseAuthManager : MonoBehaviour
                 }else
                 if(task.IsCompleted)
                 {
+                    Debug.Log("Dang Dang Ky");
+                    Map map = new Map();
+                    Debug.Log("Add map");
+                    PlayerInformation playerInfo = new PlayerInformation("", 100, 0,map);
+                    Debug.Log("Add PlayerInformation");
+                    FirebaseUser user = task.Result.User;
+                    Debug.Log("Lay thong tin user");
+                    databaseManager.WriteData(user.UserId, playerInfo.ToString());
+                    Debug.Log("Write Data");
+                    gameManager.GetPlayerInformation();
                     Debug.Log("Dang Ky thanh Cong");
+                    SceneManager.LoadScene("LoadingScene");
                 }
             });
         }
@@ -77,7 +96,7 @@ public class FireBaseAuthManager : MonoBehaviour
         {
             if (task.IsFaulted)
             {
-                Debug.Log("Dang Nhap that bai");
+                Debug.Log("Dang Nhap that bai" + task.Exception);
                 return;
             }
             else
@@ -90,7 +109,9 @@ public class FireBaseAuthManager : MonoBehaviour
                if (task.IsCompleted)
             {
                 Debug.Log("Dang Nhap thanh Cong");
-                SceneManager.LoadScene("Play");
+                GameManager.firebaseUser = firebaseAuth.CurrentUser;
+                gameManager.GetPlayerInformation();
+                SceneManager.LoadScene("LoadingScene");
             }
         });
     }
