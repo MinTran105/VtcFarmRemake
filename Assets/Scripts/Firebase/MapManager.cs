@@ -40,7 +40,6 @@ public class MapManager : MonoBehaviour
         {
             for(int y = tmGrass.cellBounds.min.y; y <= tmGrass.cellBounds.max.y;y++)
             {
-                Debug.Log(x + " " + y);
                 TilemapDetails tilemapDetails = new TilemapDetails(x, y, State.Grass);
                 list.Add(tilemapDetails);
             }
@@ -104,19 +103,6 @@ public class MapManager : MonoBehaviour
             tmFarm.SetTile(cellPos, tbFarm);
         }
     }
-    public void SaveTilemapChange(Vector3Int cellPos,State state)
-    {
-        for(int i = 0; i < map.GetLength(); i++)
-        {
-            if (map.tilemapLst[i].x == cellPos.x && map.tilemapLst[i].y == cellPos.y)
-            {
-                map.tilemapLst[i].state = state;
-                GameManager.playerInfo.map = map;
-                databaseMng.WriteData(user.UserId, GameManager.playerInfo.ToString());
-                break;
-            }
-        }
-    }
 
     private void MapToUI()
     {
@@ -136,5 +122,18 @@ public class MapManager : MonoBehaviour
             LoadMapForUser();
         }
     }
-   
+    public void SaveTilemapChange(Vector3Int cellPos, State state)
+    {
+        for (int i = 0; i < map.GetLength(); i++)
+        {
+            if (map.tilemapLst[i].x == cellPos.x && map.tilemapLst[i].y == cellPos.y)
+            {
+                map.tilemapLst[i].state = state;
+                GameManager.playerInfo.map = map;
+                databaseMng.WriteData(user.UserId, GameManager.playerInfo.ToString());
+                break;
+            }
+        }
+    }
+
 }

@@ -34,8 +34,9 @@ public class PlayerAction : MonoBehaviour
             {
                 tm_grass.SetTile(TransformPosInt(), null);
                 mapManager.SaveTilemapChange(TransformPosInt(), State.Ground);
+                Debug.Log("Dao");
             }
-            Debug.Log("Dao");
+            
             
         }
         if(Input.GetKeyDown(KeyCode.X))

@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd5adc80d58fa648855f0f40bc0cb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  databaseManager: {fileID: 0}
+  databaseManager: {fileID: 1780985387}
   loginForm: {fileID: 1479412902}
   registerForm: {fileID: 347836692}
   swtLoginForm: {fileID: 1364809700}
