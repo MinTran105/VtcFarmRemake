@@ -91,7 +91,7 @@ public class MapManager : MonoBehaviour
 
         if(tilemapDetails.state == State.Grass && checkGround != null)
         {
-            tmFarm.SetTile(cellPos, tbGrass);
+            tmGrass.SetTile(cellPos, tbGrass);
         }if(tilemapDetails.state == State.Ground && checkGround != null)
         {
             tmGrass.SetTile(cellPos, null);
