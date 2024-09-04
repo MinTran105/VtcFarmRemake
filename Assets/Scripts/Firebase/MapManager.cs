@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Newtonsoft.Json;
 using Firebase.Extensions;
+using System;
 
 public class MapManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MapManager : MonoBehaviour
     private FirebaseUser user;
     private DatabaseReference reference;
     private GameManager gameMng;
+    private FarmManager farmMng;
     private void Awake()
     {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -27,6 +29,8 @@ public class MapManager : MonoBehaviour
         gameMng = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         databaseMng = GameObject.Find("FirebaseDatabaseManager").GetComponent<FirebaseDatabaseManager>();
+
+        farmMng = GameObject.Find("FarmManager").GetComponent<FarmManager>();
 
         user = GameManager.firebaseUser;
 
@@ -40,7 +44,7 @@ public class MapManager : MonoBehaviour
         {
             for(int y = tmGrass.cellBounds.min.y; y <= tmGrass.cellBounds.max.y;y++)
             {
-                TilemapDetails tilemapDetails = new TilemapDetails(x, y, State.Grass);
+                TilemapDetails tilemapDetails = new TilemapDetails(x, y, State.Grass,DateTime.Now);
                 list.Add(tilemapDetails);
             }
         }
@@ -100,7 +104,22 @@ public class MapManager : MonoBehaviour
         if(tilemapDetails.state == State.Farm && checkGround != null)
         {
             tmGrass.SetTile(cellPos, null);
-            tmFarm.SetTile(cellPos, tbFarm);
+            double elapsedTime = DateTime.Now.Subtract(tilemapDetails.dateTime).TotalSeconds;
+            if(elapsedTime >90)
+            {
+                farmMng.Planting(cellPos, 3);
+            }else
+            if(elapsedTime > 60)
+            {
+                farmMng.Planting(cellPos, 2);
+            }else
+            if(elapsedTime > 30)
+            {
+                farmMng.Planting(cellPos, 1);
+            }else
+            {
+                farmMng.Planting(cellPos, 0);
+            }
         }
     }
 
@@ -130,6 +149,7 @@ public class MapManager : MonoBehaviour
             {
                 map.tilemapLst[i].state = state;
                 GameManager.playerInfo.map = map;
+                GameManager.playerInfo.map.tilemapLst[i].dateTime = DateTime.Now;
                 databaseMng.WriteData(user.UserId, GameManager.playerInfo.ToString());
                 break;
             }

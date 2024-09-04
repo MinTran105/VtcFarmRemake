@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerAction : MonoBehaviour
 {
+    private FarmManager farmManager;
     private MapManager mapManager;
     [Header("Tilemap and TileBase")]
     public Tilemap tm_ground;
@@ -21,6 +22,7 @@ public class PlayerAction : MonoBehaviour
     void Start()
     {
         mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
+        farmManager = GameObject.Find("FarmManager").GetComponent<FarmManager>();
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class PlayerAction : MonoBehaviour
 
             if(currentTbGrass == null && currentTbGround != null && currentTbFarm == null)
             {
-                tm_farm.SetTile(TransformPosInt(),tb_farm);
+                farmManager.Planting(TransformPosInt(),0);
                 Debug.Log("Trong");
                 mapManager.SaveTilemapChange(TransformPosInt(),State.Farm);
             }

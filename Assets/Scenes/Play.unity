@@ -467,6 +467,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129659124}
   m_CullTransparentMesh: 1
+--- !u!1 &278105736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278105737}
+  - component: {fileID: 278105738}
+  m_Layer: 0
+  m_Name: FarmManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278105737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278105736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 332.06927, y: 905.3734, z: 0.19441462}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1856993809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &278105738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278105736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4842e4fe25b2245a4fab26872c713a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growPlant:
+  - {fileID: 11400000, guid: 4a56b3845b787f54485128d41e3df3ac, type: 2}
+  - {fileID: 11400000, guid: 37b281e772b90f0409164a619bb5ed7f, type: 2}
+  - {fileID: 11400000, guid: 823dca6cd34606e4c8485a1eab168e38, type: 2}
+  - {fileID: 11400000, guid: 7aed14d8fcb49e843973a68cb9199e27, type: 2}
+  tmFarm: {fileID: 936186801}
+  growupTime: 30
 --- !u!1 &305360880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,6 +5173,7 @@ Transform:
   - {fileID: 563097402}
   - {fileID: 1681486166}
   - {fileID: 1685680395}
+  - {fileID: 278105737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031603790
