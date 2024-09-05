@@ -73,16 +73,22 @@ public class FireBaseAuthManager : MonoBehaviour
                 if(task.IsCompleted)
                 {
                     Debug.Log("Dang Dang Ky");
+
                     Map map = new Map();
                     Debug.Log("Add map");
+
                     PlayerInformation playerInfo = new PlayerInformation("", 100, 0,map);
                     Debug.Log("Add PlayerInformation");
+
                     FirebaseUser user = task.Result.User;
                     Debug.Log("Lay thong tin user");
+
                     databaseManager.WriteData(user.UserId, playerInfo.ToString());
                     Debug.Log("Write Data");
                     gameManager.GetPlayerInformation();
                     Debug.Log("Dang Ky thanh Cong");
+
+                    LoadingManager.SCENE_NAME = "Play";
                     SceneManager.LoadScene("LoadingScene");
                 }
             });
@@ -111,6 +117,7 @@ public class FireBaseAuthManager : MonoBehaviour
                 Debug.Log("Dang Nhap thanh Cong");
                 GameManager.firebaseUser = firebaseAuth.CurrentUser;
                 gameManager.GetPlayerInformation();
+                LoadingManager.SCENE_NAME = "Play";
                 SceneManager.LoadScene("LoadingScene");
             }
         });
