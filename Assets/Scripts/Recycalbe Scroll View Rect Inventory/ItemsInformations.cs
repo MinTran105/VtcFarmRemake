@@ -8,12 +8,14 @@ public class ItemsInformations
     public string name { get; set; }
     public string description { get; set; }
     public Sprite sprite { get; set; }
+    public int total {  get; set; }
     public ItemsInformations() { }
 
-    public ItemsInformations(string name, string description, Sprite sprite)
+    public ItemsInformations(string name, string description, int total, Sprite sprite)
     {
         this.name = name;
         this.description = description;
+        this.total = total;
         this.sprite = sprite;
     }
 

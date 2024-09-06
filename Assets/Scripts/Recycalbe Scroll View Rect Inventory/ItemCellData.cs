@@ -9,7 +9,7 @@ public class ItemCellData : MonoBehaviour,ICell
 {
     //UI
     public Text nameLabel;
-    public Text descriptionLabel;
+    public Text total;
     public Image imageItem;
 
     //Model
@@ -22,7 +22,13 @@ public class ItemCellData : MonoBehaviour,ICell
         this._cellIndex = cellIndex;
 
         nameLabel.text = itemInfor.name;
-        descriptionLabel.text = itemInfor.description;
         imageItem.sprite = itemInfor.sprite;
+        if(itemInfor.total == 0)
+        {
+            total.text = "";
+        }else
+        {
+            total.text = itemInfor.total.ToString();
+        }
     }
 }

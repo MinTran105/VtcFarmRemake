@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -2.0796967, y: 2.0796967}
+  m_SizeDelta: {x: 104.1594, y: 104.1594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4579704211024306037
 CanvasRenderer:
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4312338172466987550}
   - component: {fileID: 4975696635854134542}
   m_Layer: 5
-  m_Name: Description
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 35}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4312338172466987550
@@ -153,7 +153,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Description
+  m_Text: 'Name
+
+'
 --- !u!1 &8667538815877096325
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,8 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9b48c61d723bd48b56e2db3629c26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLabel: {fileID: 4143757761227202547}
-  descriptionLabel: {fileID: 4975696635854134542}
+  nameLabel: {fileID: 4975696635854134542}
+  total: {fileID: 4143757761227202547}
   imageItem: {fileID: 8258908950142250451}
 --- !u!1 &8711960569350396006
 GameObject:
@@ -260,7 +262,7 @@ GameObject:
   - component: {fileID: 8019810931044886058}
   - component: {fileID: 4143757761227202547}
   m_Layer: 5
-  m_Name: Name
+  m_Name: Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,8 +284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 250, y: 40}
+  m_AnchoredPosition: {x: 68.739, y: -30.8405}
+  m_SizeDelta: {x: 137.48, y: 39.9999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8019810931044886058
 CanvasRenderer:
@@ -326,4 +328,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: 'Total
+
+'

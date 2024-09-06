@@ -35,8 +35,20 @@ public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
 
     public void UpdateItem(string name,string des, Sprite sprite)
     {
-        ItemsInformations item =  new ItemsInformations(name,des,sprite);
-        this.items.Add(item);
+        
+        for(int i = 0;i < items.Count;i++)
+        {
+            if(items[i].name == name)
+            {
+                items[i].total++;
+                break;
+            }else
+            {
+                ItemsInformations item = new ItemsInformations(name, des, 1, sprite);
+                int temp  = items.FindIndex(0,1,itemCell => itemCell.total == 0);
+                items[temp] = item;
+            }
+        }
         recyclableScrollRect.ReloadData();
         Debug.Log("Nhat Thanh Cong");
     }
@@ -45,9 +57,7 @@ public class ItemBagRSVR : MonoBehaviour, IRecyclableScrollRectDataSource
         List<ItemsInformations> list = new List<ItemsInformations>();
         for (int i = 0; i < 20; i++)
         {
-            ItemsInformations item = new ItemsInformations();
-            item.name = "Name " + i;
-            item.description = "Des: " + i;
+            ItemsInformations item = new ItemsInformations(" "," ",0,null);
             list.Add(item);
         }
         GetListItem(list);
